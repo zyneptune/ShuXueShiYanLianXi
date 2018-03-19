@@ -68,18 +68,18 @@ clear
 % colorbar('horiz');
 
 %第七题
-f1 =@(x,y,t)10*exp(1-t)*sin(x).*cos(y);
-x1 = -2*pi:0.1:2*pi;
-x2 = -2*pi:0.1:2*pi;
-n = 500;
-[xx,yy] = meshgrid(x1,x2);
-
-for i = 0:n
-    fu = f1(xx,yy,10/n*i);
-    mesh(fu);
-    m(i+1) = getframe;
-end
-movie(m,n+1);
+% f1 =@(x,y,t)10*exp(1-t)*sin(x).*cos(y);
+% x1 = -2*pi:0.1:2*pi;
+% x2 = -2*pi:0.1:2*pi;
+% n = 500;
+% [xx,yy] = meshgrid(x1,x2);
+% 
+% for i = 0:n
+%     fu = f1(xx,yy,10/n*i);
+%     mesh(fu);
+%     m(i+1) = getframe;
+% end
+% movie(m,n+1);
 clear
 %第八题
 % f1 =@(u,v)u.*sin(v);
@@ -88,9 +88,44 @@ clear
 % 
 % U = -5:0.1:5;
 % V = -5:0.1:5;
-% x = f1(U,V);
-% y = f2(U,V);
-% z = f3(U,V);
+% [uu,vv] = meshgrid(U,V);
+% xx = f1(uu,vv);
+% yy = f2(uu,vv);
+% zz = f3(uu,vv);
+% mesh(xx,yy,zz);
+%第九题
+% n = 10000;
+% m = [0.5 0 0 0.5 0 0;0.5 0 0 0.5 0.5 0;0.5 0 0 0.5 0.25 0.5];
+% x = zeros(n,1);
+% y = zeros(n,1);
 % 
-% [xx,yy,zz] = meshgrid(x,y,z);
-% mesh();
+% for i = 2:n
+%     p = rand();
+%     k =0;
+%     if p<=0.3333
+%         k = 1;
+%     end
+% 
+%     if 0.3333<p && p<=0.6666
+%             k = 2;
+%     end
+%     if 0.6666<p
+%         k = 3;
+%     end
+%     list = m(k,:);
+%     a = list(1);
+%     b = list(2);
+%     c = list(3);
+%     d = list(4);
+%     e = list(5);
+%     f = list(6);
+%     
+%     x(i) = a*x(i-1)+b*y(i-1)+e;
+%     y(i) = c*x(i-1)+d*y(i-1)+f;
+% 
+% end
+% plot(x,y,'b-.');
+% %第十题
+% fun =@(x,y)sin(x.*y)+x+y;
+% ezplot(fun);
+% title('sin(x*y)+x+y=0');
