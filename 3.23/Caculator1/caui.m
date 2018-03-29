@@ -54,7 +54,7 @@ function caui_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for caui
 handles.output = hObject;
-% ÉùÃ÷
+% å£°æ˜
 handles.outnum = '0';
 handles.equation = '';
 handles.iftype = 0;
@@ -134,7 +134,7 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton8 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% ³õÊ¼»¯
+% åˆå§‹åŒ–
 handles.outnum = '0';
 handles.equation = '';
 set(handles.text2,'String','0');
@@ -343,7 +343,7 @@ function pushbutton28_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton28 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% ¼ÓºÅ
+% åŠ å·
 Operator(hObject,handles,'+');
 
 % --- Executes on button press in pushbutton29.

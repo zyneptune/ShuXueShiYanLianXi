@@ -1,12 +1,12 @@
 function Str2 = InputOperator(operator,str)
-%INPUTOPERATOR ÔÚ×Ö·û´®ºó¼ÓÔËËã·ûºÅ
-%str ÊÇÊı£¬operatorÊÇ·ûºÅ
+%INPUTOPERATOR åœ¨å­—ç¬¦ä¸²ååŠ è¿ç®—ç¬¦å·
+%str æ˜¯æ•°ï¼Œoperatoræ˜¯ç¬¦å·
 if isempty(strfind(str,operator)) == 1
-        if strcmp(operator,'.') == 1 %Ğ¡Êıµã
+        if strcmp(operator,'.') == 1 %å°æ•°ç‚¹
             Str2= strcat(str,operator);
         end
         
-        if strcmp(operator,'.0') == 1 %Ğ¡Êıµãºó¼Ó0
+        if strcmp(operator,'.0') == 1 %å°æ•°ç‚¹ååŠ 0
             if isempty(strfind(str,'.')) == 1
                 Str2= strcat(str,'.0');
             else

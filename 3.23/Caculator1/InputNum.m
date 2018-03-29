@@ -1,5 +1,5 @@
 function Str2 = InputNum(num,str)
-%INPUTNUM ÔÚ×Ö·û´®Î²²¿¼ÓÊý×Ö
+%INPUTNUM åœ¨å­—ç¬¦ä¸²å°¾éƒ¨åŠ æ•°å­—
 % 
 if strcmp(str,'0') == 1
     Str2 = num2str(num);
