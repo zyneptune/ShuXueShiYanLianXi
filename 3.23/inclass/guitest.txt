@@ -1,0 +1,12 @@
+guide()
+函数回调
+axes(obj); 激活坐标轴对象
+
+handles.zy = 3;
+guidate(hObject,handles);
+传递数据
+eval('string')
+....
+ string1 ='1+232-41423 '
+'result = ' + string1;
+'result = 1+232-41423'
