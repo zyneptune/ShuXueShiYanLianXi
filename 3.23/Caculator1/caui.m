@@ -434,7 +434,7 @@ function Operator(hObject,handles,op)
 if isempty(handles.equation) == 1
     handles.equation = strcat(InputOperator('.0',handles.outnum),op);
     handles.outnum = '0';
-
+    handles.iftype = 0;
 else
     if handles.iftype == 1
         handles.equation = strcat('t = ',handles.equation,handles.outnum,';');
