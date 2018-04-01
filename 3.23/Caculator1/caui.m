@@ -55,6 +55,7 @@ function caui_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for caui
 handles.output = hObject;
 % 声明
+handles.shizi = '';
 handles.outnum = '0';
 handles.equation = '';
 handles.iftype = 0;
@@ -127,16 +128,20 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+handles.outnum = '0';
+set(handles.text2,'String','0');
+guidata(hObject,handles);
 
 % --- Executes on button press in pushbutton8.
 function pushbutton8_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton8 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% 初始化
+% 初始�?
 handles.outnum = '0';
 handles.equation = '';
+handles.shizi = '';
+set(handles.text4,'String','');
 set(handles.text2,'String','0');
 set(handles.text3,'String','C');
 guidata(hObject,handles);
@@ -153,7 +158,7 @@ function pushbutton10_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton10 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-Operator(hObject,handles,'/')
+Operator(hObject,handles,'/');
 
 
 % --- Executes on button press in pushbutton11.
@@ -217,7 +222,7 @@ function pushbutton16_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton16 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-Operator(hObject,handles,'*')
+Operator(hObject,handles,'*');
 
 % --- Executes on button press in pushbutton17.
 function pushbutton17_Callback(hObject, eventdata, handles)
@@ -405,11 +410,14 @@ else
     handles.equation = strcat('t = ',handles.equation,handles.outnum,';');
     eval(handles.equation);
     handles.equation = num2str(t);
+    handles.shizi = strcat(handles.shizi,handles.outnum,'=',handles.equation);
+    set(handles.text4,'String',handles.shizi);
+    handles.shizi = strcat(handles.equation,'+');
     handles.outnum = '0';
     RefreshScreen(handles,handles.equation);
     handles.iftype = 0;
     end
-handles.ifequal = 1;
+    handles.ifequal = 1;
 end
 set(handles.text3,'String','=');
 guidata(hObject,handles);
@@ -433,20 +441,28 @@ function RefreshScreen(handles,text)
 function Operator(hObject,handles,op)
 if isempty(handles.equation) == 1
     handles.equation = strcat(InputOperator('.0',handles.outnum),op);
+    handles.shizi = handles.equation;
     handles.outnum = '0';
     handles.iftype = 0;
 else
+    if handles.ifequal == 1
+        handles.shizi(end:end) = op;
+    end
     if handles.iftype == 1
-        handles.equation = strcat('t = ',handles.equation,handles.outnum,';');
-        eval(handles.equation);
+        handles.equation = strcat(handles.equation,handles.outnum);
+        handles.shizi = strcat(handles.shizi,handles.outnum,op);
+        set(handles.text4,'String',handles.shizi);
+        t = eval(handles.equation);
         handles.equation = num2str(t);
         handles.outnum = '0';
         RefreshScreen(handles,handles.equation);
         handles.equation = strcat(handles.equation,op);
         handles.iftype = 0;
-        
+
+
     elseif handles.equation(end:end) == '+' || handles.equation(end:end) == '-' || handles.equation(end:end) == '*' || handles.equation(end:end) == '/' 
         handles.equation(end:end) = op;
+        handles.shizi(end:end) = op;
     else
         if isempty(strfind(handles.equation,op)) == 1
         handles.equation = strcat(handles.equation,op);
